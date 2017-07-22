@@ -1,0 +1,146 @@
+{
+    "result" : [{
+                "formatted_address" : "Grand Rapids, Mi",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "42.956337",
+                    "lng" : "-85.730129"
+                    }
+                }  
+            },
+            {
+                "formatted_address" : "Catania, Sicily",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "37.4906905",
+                    "lng" : "15.007478"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "Jacksonville, Florida",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "30.3321838",
+                    "lng" : "-81.65565099999998"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "Pleasonton, CA",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "37.6624312",
+                    "lng" : "-121.87467889999999"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "Aiea Heights, Hawaii",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "21.3908333",
+                    "lng" : "-157.9202778"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "Gainsville, Florida",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "29.6516344",
+                    "lng" : "-82.32482619999996"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "Wyoming, Michigan",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "42.9133602",
+                    "lng" : "-85.7053085"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "Fort Benning, Georgia",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "32.3912672",
+                    "lng" : "-84.82290739999996"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "San Diego, CA",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "32.715738",
+                    "lng" : "-117.16108380000003"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "Yokosuka, Kanagawa Prefecture, Japan",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "35.2813412",
+                    "lng" : "139.67220050000003"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "Sapporo, Hokkaido Prefecture, Japan",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "43.0620958",
+                    "lng" : "141.3543763"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "Hiroshima, Hiroshima Prefecture, Japan",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "34.3852029",
+                    "lng" : "132.45529269999997"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "Tokyo, Japan",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "35.6894875",
+                    "lng" : "139.69170639999993"
+                    }
+                }
+            },
+            {
+                "formatted_address"  : "Yokohama, Kanagawa Prefecture, Japan",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "35.4437078",
+                    "lng" : "139.6380256"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "Subic Bay, Philippines",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "14.7910576",
+                    "lng" : "120.23973360000002"
+                    }
+                }
+            },
+            {
+                "formatted_address" : "Island Eastern Corridor, Hong Kong",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "22.3011673701064",
+                    "lng" : "114.20042127370834"
+                    }
+                }
+            }]
+}
