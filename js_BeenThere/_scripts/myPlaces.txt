@@ -1,0 +1,98 @@
+{
+    "beenThere" : [{
+                "employer"    : "Family",
+                "location"    : "Grand Rapids, Mi",
+                "title"      : "Kid",
+                "description" : "Born in GR"
+            },
+            {
+                "employer"    : "Family",
+                "location"    : "Catania, Sicily",
+                "title"       : "Kid",
+                "description" : "Crazy time for a kid, living on the side of an active volcano"
+            },
+            {
+                "employer"    : "Family",
+                "location"    : "Jacksonville, Florida",
+                "title"       : "Kid",
+                "description" : "Damn the south is hot and muggy"
+            },
+            {
+                "employer"    : "Family",
+                "location"    : "Pleasonton, CA",
+                "title"       : "Kid",
+                "description" : "Silicon Valley did not really exist yet"
+            },
+            {
+                "employer"    : "Family",
+                "location"    : "Aiea Heights, Hawaii",
+                "title"       : "Kid",
+                "description" : "You must love the beach and salt water if you want to live here."
+            },
+            {
+                "employer"    : "Family",
+                "location"    : "Gainsville, Florida",
+                "title"       : "Kid",
+                "description" : "Back to the old Swamp, Go Gators!"
+            },
+            {
+                "employer"    : "Family",
+                "location"    : "Wyoming, Michigan",
+                "title"       : "Kid",
+                "description" : "Why did we come back to the cold!!!!"
+            },
+            {
+                "employer"    : "Army",
+                "location"    : "Fort Benning, Georgia",
+                "title"       : "Kid",
+                "description" : "Yep, 17 and active duty, go figure."
+            },
+            {
+                "employer"    : "Navy",
+                "location"    : "San Diego, CA",
+                "title"       : "E3",
+                "description" : "Navy Boot   :-P."
+            },
+            {
+                "employer"    : "Navy",
+                "location"    : "Yokosuka, Japan",
+                "title"       : "E3",
+                "description" : "Here's where the fun begins."
+            },
+            {
+                "employer"    : "Navy",
+                "location"    : "Sapporo, Japan",
+                "title"       : "E3",
+                "description" : "We went to the beer gardens on the northern island."
+            },
+            {
+                "employer"    : "Navy",
+                "location"    : "Hiroshima, Japan",
+                "title"       : "E3",
+                "description" : "Oh no you didn't. yes, yes we did."
+            },
+            {
+                "employer"    : "Navy",
+                "location"    : "Tokyo, Japan",
+                "title"       : "E3",
+                "description" : "Why did I get so drunk as I turned 21. - It was legal for me at 17."
+            },
+            {
+                "employer"    : "Navy",
+                "location"    : "Yokohama, Japan",
+                "title"       : "E3",
+                "description" : "Great little stomping ground. Clubb'n and the like.  :)"
+            },
+            {
+                "employer"    : "Navy",
+                "location"    : "Cubic Bay, Philipines",
+                "title"       : "E3",
+                "description" : "Whos up to split a trike or Jeepney"
+            },
+            {
+                "employer"    : "Navy",
+                "location"    : "Hong Kong, China",
+                "title"       : "E3",
+                "description" : "They still owe me three tailored suits!!"
+            }]
+}

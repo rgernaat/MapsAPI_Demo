@@ -6,102 +6,7 @@
         staticResults : {},
         infoContent : '',
         offLineMode : true,
-        beenThere : [{
-            employer    : "Family",
-            location    : "Grand Rapids, Mi",
-            title       : "Kid",
-            description : "Born in GR"
-        },
-        {
-            employer    : "Family",
-            location    : "Catania, Sicily",
-            title       : "Kid",
-            description : "Crazy time for a kid, living on the side of an active volcano"
-        },
-        {
-            employer    : "Family",
-            location    : "Jacksonville, Florida",
-            title       : "Kid",
-            description : "Damn the south is hot and muggy"
-        },
-        {
-            employer    : "Family",
-            location    : "Pleasonton, CA",
-            title       : "Kid",
-            description : "Silicon Valley did not really exist yet"
-        },
-        {
-            employer    : "Family",
-            location    : "Aiea Heights, Hawaii",
-            title       : "Kid",
-            description : "You must love the beach and salt water if you want to live here."
-        },
-        {
-            employer    : "Family",
-            location    : "Gainsville, Florida",
-            title       : "Kid",
-            description : "Back to the old Swamp, Go Gators!"
-        },
-        {
-            employer    : "Family",
-            location    : "Wyoming, Michigan",
-            title       : "Kid",
-            description : "Why did we come back to the cold!!!!"
-        },
-        {
-            employer    : "Army",
-            location    : "Fort Benning, Georgia",
-            title       : "Kid",
-            description : "Yep, 17 and active duty, go figure."
-        },
-        {
-            employer    : "Navy",
-            location    : "San Diego, CA",
-            title       : "E3",
-            description : "Navy Boot   :-P."
-        },
-        {
-            employer    : "Navy",
-            location    : "Yokosuka, Japan",
-            title       : "E3",
-            description : "Here's where the fun begins."
-        },
-        {
-            employer    : "Navy",
-            location    : "Sapporo, Japan",
-            title       : "E3",
-            description : "We went to the beer gardens on the northern island."
-        },
-        {
-            employer    : "Navy",
-            location    : "Hiroshima, Japan",
-            title       : "E3",
-            description : "Oh no you didn't. yes, yes we did."
-        },
-        {
-            employer    : "Navy",
-            location    : "Tokyo, Japan",
-            title       : "E3",
-            description : "Why did I get so drunk as I turned 21. - It was legal for me at 17."
-        },
-        {
-            employer    : "Navy",
-            location    : "Yokohama, Japan",
-            title       : "E3",
-            description : "Great little stomping ground. Clubb'n and the like.  :)"
-        },
-        {
-            employer    : "Navy",
-            location    : "Cubic Bay, Philipines",
-            title       : "E3",
-            description : "Whos up to split a trike or Jeepney"
-        },
-        {
-            employer    : "Navy",
-            location    : "Hong Kong, China",
-            title       : "E3",
-            description : "They still owe me three tailored suits!!"
-        }]
+        beenThere : []
     };
     
     if (!('fetch' in window)) {
@@ -117,36 +22,45 @@
         console.log(result);
     }
     function validateResponse(response) {
-        // TODO 2.3
         if (!response.ok) {
-        throw Error(response.statusText);
+            throw Error(response.statusText);
         }
         return response;
     }
     app.readResponseAsJson = function(response) {
         return response.json();
     }
-    app.loadJson = function(response) {
+    app.loadStaticResults = function(response) {
         var data = response;
         app.staticResults = data;
+        //console.log(data);
     }
 
-    app.fetchJson = function(){
-        fetch('_scripts/searchResults.txt')
-        .then(validateResponse)
+    app.loadMyplaces = function(response) {
+        var data = response;
+        app.beenThere = data;
+        //console.log(data);
+    }
+
+    app.fetchMyPlaces = function(myData, sResults){
+        fetch(myData)
         .then(app.readResponseAsJson)
-        .then(app.loadJson)
+        .then(app.loadMyplaces)
+        
+        fetch(sResults)
+        .then(app.readResponseAsJson)
+        .then(app.loadStaticResults)
         .then(app.initializeMap)
         .catch(app.logError);
     }
 
-    //initializeMap() is called when page is loaded.
     app.initializeMap = function() {
-       map = new google.maps.Map(document.querySelector('#map'), app.mapOptions);
+        map = new google.maps.Map(document.querySelector('#map'), app.mapOptions);
         // Sets the boundaries of the map based on pin locations
         window.mapBounds = new google.maps.LatLngBounds();
-        app.pinPoster(app.beenThere);
-        
+        //console.log(app.beenThere);
+        //console.log(app.staticResults);
+        app.pinPoster(app.beenThere.beenThere);
     }
 
     app.createMapMarker = function(placeData, querySent) {
@@ -171,7 +85,7 @@
             title: name
         });
 
-        app.findMarkerDesc(app.beenThere, querySent.query);
+        app.findMarkerDesc(app.beenThere.beenThere, querySent.query);
         var infoWindow = new google.maps.InfoWindow({
             content:name +' : '+ app.infoContent
         });
@@ -179,7 +93,6 @@
         google.maps.event.addListener(marker, 'click', ()=>{
             infoWindow.open(map, marker);
         });
-
         // this is where the pin actually gets added to the map
         //bounds.extend() takes in a map location object
         bounds.extend(new google.maps.LatLng(lat, lon));
@@ -222,7 +135,7 @@
     // Calls the initializeMap() function when the page loads
     //window.addEventListener('load', app.initializeMap());
     if(app.offLineMode){
-        window.addEventListener('load', app.fetchJson());
+        window.addEventListener('load', app.fetchMyPlaces('_scripts/myPlaces.txt','_scripts/searchResults.txt'));
     }else{
         window.addEventListener('load', app.initializeMap());
     }
