@@ -1,0 +1,12 @@
+[{
+    "employer"    : "Family",
+    "location"    : "Grand Rapids, Mi",
+    "title"      : "Kid",
+    "description" : "Born in GR"
+},
+{
+    "employer"    : "Family",
+    "location"    : "Catania, Sicily",
+    "title"       : "Kid",
+    "description" : "Crazy time for a kid, living on the side of an active volcano"
+}]

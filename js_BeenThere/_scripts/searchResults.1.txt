@@ -1,0 +1,22 @@
+{
+	"result" : [{
+                "formatted_address" : "Grand Rapids, Mi",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "42.956337",
+                    "lng" : "-85.730129"
+                    }
+                }  
+            },
+            {
+                "formatted_address" : "Catania, Sicily",
+                "geometry" : {
+                    "location" : {
+                    "lat" : "37.4906905",
+                    "lng" : "15.007478"
+                    }
+                }
+            }
+    ]
+}
+

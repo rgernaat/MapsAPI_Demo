@@ -6,13 +6,40 @@
         staticResults : {},
         infoContent : '',
         offLineMode : true,
-        beenThere : []
+        beenThere : [],
+        searchOffline : '_scripts/searchResults.txt',
+        myPlaceOffline : '_scripts/myPlaces.txt',
+        searchFile : '_scripts/searchResults.1.txt',
+        myPlaceFile : '_scripts/myPlaces.1.txt'
     };
     
     if (!('fetch' in window)) {
         console.log('Fetch API not found, try including the polyfill');
         return;
     }
+
+    var getResults = fetch((app.offLineMode?app.searchOffline:app.searchFile)).then(function(response){ 
+         return response.json()
+    });
+    var getPlaces = fetch((app.offLineMode?app.myPlaceOffline:app.myPlaceFile)).then(function(response){
+        return response.json();
+        
+    });
+    var combinedData = {"getPlaces":{},"getResults":{}};
+    
+    Promise.all([getResults,getPlaces])
+    .then(function(values){
+        combinedData["getResults"] = values[0];
+        combinedData["getPlaces"]  = values[1];
+        return combinedData
+    })
+    .then(function(data){
+        app.beenThere = data.getPlaces;
+        app.staticResults = data.getResults;
+    })
+    .then(function(data){
+        app.initializeMap();
+    })
 
     app.logError = function(error) {
         console.log('Looks like there was a problem: \n', error);
@@ -21,46 +48,17 @@
     app.logResult = function(result) {
         console.log(result);
     }
-    function validateResponse(response) {
-        if (!response.ok) {
-            throw Error(response.statusText);
-        }
-        return response;
-    }
-    app.readResponseAsJson = function(response) {
-        return response.json();
-    }
-    app.loadStaticResults = function(response) {
-        var data = response;
-        app.staticResults = data;
-        //console.log(data);
-    }
-
-    app.loadMyplaces = function(response) {
-        var data = response;
-        app.beenThere = data;
-        //console.log(data);
-    }
-
-    app.fetchMyPlaces = function(myData, sResults){
-        fetch(myData)
-        .then(app.readResponseAsJson)
-        .then(app.loadMyplaces)
-        
-        fetch(sResults)
-        .then(app.readResponseAsJson)
-        .then(app.loadStaticResults)
-        .then(app.initializeMap)
-        .catch(app.logError);
-    }
-
+    
     app.initializeMap = function() {
-        map = new google.maps.Map(document.querySelector('#map'), app.mapOptions);
-        // Sets the boundaries of the map based on pin locations
-        window.mapBounds = new google.maps.LatLngBounds();
         //console.log(app.beenThere);
         //console.log(app.staticResults);
-        app.pinPoster(app.beenThere.beenThere);
+        //return 
+        
+        map = new google.maps.Map(document.querySelector('#map'), app.mapOptions);
+        
+        // Sets the boundaries of the map based on pin locations
+        window.mapBounds = new google.maps.LatLngBounds();
+        app.pinPoster(app.beenThere);
     }
 
     app.createMapMarker = function(placeData, querySent) {
@@ -85,7 +83,7 @@
             title: name
         });
 
-        app.findMarkerDesc(app.beenThere.beenThere, querySent.query);
+        app.findMarkerDesc(app.beenThere, querySent.query);
         var infoWindow = new google.maps.InfoWindow({
             content:name +' : '+ app.infoContent
         });
@@ -130,14 +128,6 @@
                 }
             }
         );
-    }
-
-    // Calls the initializeMap() function when the page loads
-    //window.addEventListener('load', app.initializeMap());
-    if(app.offLineMode){
-        window.addEventListener('load', app.fetchMyPlaces('_scripts/myPlaces.txt','_scripts/searchResults.txt'));
-    }else{
-        window.addEventListener('load', app.initializeMap());
     }
 
     // Vanilla JS way to listen for resizing of the window
